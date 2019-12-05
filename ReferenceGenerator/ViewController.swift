@@ -14,16 +14,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var generatorButton: UIButton!
 
 
-    let formatter = DateFormatter()
+    
 
     
 //    var dateComponent: DateComponents = .second
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       formatter.dateFormat = "yyyy-MMM-dd HH:mm:ss"
+
+        ///Test input date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MMM-dd HH.mm:ss"
+        let testDate = formatter.date(from: "2019-Dec-01 13.30:10")
+        guard let date = testDate else{return}
+        //        let date = Date()
+        
         let generator = ReferenceGenerator()
-        textField.text = generator.generateReference()
+        textField.text = generator.generateReference(date)
 
 
     }

@@ -30,12 +30,11 @@ struct ReferenceGenerator{
         return  val
     }
     
-    func generateReference() ->String{
+    func generateReference(_ date: Date) ->String{
         var specialDate:Int = 0
         var bitOffset: Int = 0
         let componentsValueArray: [Int] = [60,60,24,31,12,100] //second,minute,hour_of,day_of_month,month,year
         
-        let date = Date()
         for component in DateComponents.allCases{
             if component == .second{
                 specialDate += getComponentValue(with: date, only: component.calendarComponent())
@@ -52,7 +51,6 @@ struct ReferenceGenerator{
         //        print("dataLength: \(dataLength)")
         
         /// below data1 and data2 just for debug purpose
-        
         
         
         let data1 = NSData(data: specialDate.data)
